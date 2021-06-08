@@ -1,0 +1,102 @@
+如果把 markdown 看作是一个 对象的话，
+她应该是怎么样的？
+
+功能看：
+
+1. 可以将 text 文本编译成 md 格式 预览
+2. 可以 有很多装备（工具）
+3. 可以 更换样式主题
+
+逻辑 与 UI 相分离的话：
+最外曾应该是， 逻辑层，她上面有很多 UI 实现， 所以，文件夹的应该分为， core， UI
+
+## 思考 1
+
+如果 不管 react 直接写的话， 应该是怎样的？
+首先是创建一个对象
+
+```typescript
+// 编译器对象
+class MarkdownEditor {
+  //  应该有属性{ markdown文本, html结果 }
+  constructor() {
+    this.markdownText = "";
+    this.htmlDom = "";
+  }
+  // 编译的功能： 将 文本 编译成 html 预览
+  compileTxt2Html(markdownText, htmlDom) {}
+
+  // 渲染页面
+  // 页面的绘制 可以是另一种 专门处理 UI 的方法！
+  render() {}
+}
+```
+
+## 思考 2
+
+markdown 编辑器 应该有很多很多的功能（工具栏中的各种工具）
+我觉得工具栏应该是， 编译器这个对象 那个武器，用来修修改自身的一些东西！！！
+工具栏应该是另外一个对象，用来实现 编译器的各种功能！编辑器拥有它
+应该将编辑器 传给它， 然后做出修改！！
+
+```typescript
+class  {
+  consstructor(editor:MarkdownEditor) {
+    this.editor = editor;
+  }
+  // ... 各种功能实现, 这些是否是一些静态方法， 因该在 MarkdownTool 上实现的！
+  // 字体加粗
+  static fontBold() {
+    这应该要拿到 编辑器 这个对象
+  }
+}
+
+function init () {
+  const markdownEditor = new MarkdownEditor();
+  const markdownTool = new MarkdownTool(markdownEditor);
+  // ... 其他处理
+  markdownEditor.render();
+  markdownTool.render();
+}
+
+init();
+```
+
+## 思考 3
+
+所以外层应该还有一个 对象或者方法 来管理 上面两个对象
+
+```typescript
+// import 前面两个对象
+function createMarkdownEditor() {
+  // 做一些 一开始 初始化的处理
+}
+```
+
+## 思考 4
+
+主题更换的实现
+主题 更换应该是 UI 层面的功能。
+这个应该怎么控制呢？
+看一下，别人是怎么做 主题更换的再决定！！
+
+如果让我来做的话，
+主题应该是有几套 css 样式切换的
+最简单，一开始就想到的是， 更换 css 文件， 删除原来的 css 样式，导入新的 css 样式
+其次是，利用 scss 或者 less 或者就是 --color css 变量，进行更换，这个是 一套 css 样式！
+其他的暂时还没想到...
+应该 写在那个地方呢？
+更换主题，按理来说，应该是， 工具栏的功能！
+
+在想想 vanillaJs 的 UI 样式应该怎么实现！
+
+直接控制原生 Dom 进行修改！
+
+如果使用 react 来做的话， UI 部分只需要 提出一个 函数组件， 逻辑部分写在 class 组件当中
+
+如果使用 Vue 来做的话，时候是否也可以分成两个组件 来做
+
+这样分析下来， class 组件也没必要一起， class 和 hook 的区别 应该是在于 hook 可以横向的提取公共逻辑，做到更进一步的代码服用！
+
+因为 react 相对与继承，更倾向于 组合这样的思想，所以， hook 是可以 替代 class 的。
+一开始，还是使用 class 来写一下吧！

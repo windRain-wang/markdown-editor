@@ -1,8 +1,8 @@
-import { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
+import MarkdownEdit from "./ui/markdownEdit";
 import marked from "marked";
 import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
-import "./index.css";
 
 marked.setOptions({
   breaks: true,
@@ -13,22 +13,27 @@ marked.setOptions({
   }
 });
 
-function MarkdownEditContainer() {
-  const [htmlMarkdownStr, setHtmlMarkdownStr] = useState("");
-  const parse = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    const htmlMarkdownStr = marked(event.target.value);
-    setHtmlMarkdownStr(htmlMarkdownStr);
+interface IState {
+  htmlMarkdownStr: string;
+  parse: (event: ChangeEvent<HTMLTextAreaElement>) => void;
+}
+
+class MarkdownEditContainer extends React.Component<{}, IState> {
+  public state = {
+    htmlMarkdownStr: "",
+    parse: this.parse.bind(this)
   };
 
-  return (
-    <div className="markdownEditContainer">
-      <textarea className="edit" onChange={parse} />
-      <div
-        className="show"
-        dangerouslySetInnerHTML={{ __html: htmlMarkdownStr }}
-      ></div>
-    </div>
-  );
+  parse(event: ChangeEvent<HTMLTextAreaElement>) {
+    const htmlMarkdownStr: string = marked(event.target.value);
+    this.setState({
+      htmlMarkdownStr
+    });
+  }
+
+  render() {
+    return <MarkdownEdit {...this.state} />;
+  }
 }
 
 export default MarkdownEditContainer;
