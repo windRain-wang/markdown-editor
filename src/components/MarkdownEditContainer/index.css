@@ -1,0 +1,19 @@
+.markdownEditContainer {
+  height: 100%;
+}
+.markdownEditContainer .edit {
+  float: left;
+  width: 50%;
+  height: 100%;
+  resize: none;
+  outline: none;
+  border: none;
+  background-color: whitesmoke;
+  box-sizing: border-box;
+}
+.markdownEditContainer .show {
+  float: left;
+  width: 50%;
+  height: 100%;
+  box-sizing: border-box;
+}
