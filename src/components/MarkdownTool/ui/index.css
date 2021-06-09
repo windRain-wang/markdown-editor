@@ -1,0 +1,16 @@
+.tool-bars {
+  height: 40px;
+  line-height: 40px;
+  background-color: lightpink;
+}
+.tool-bars .tool {
+  margin: 3px 5px;
+  padding: 4px 8px;
+  font-size: 14px;
+  background-color: lightblue;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.tool-bars .tool:hover {
+  background-color: rgb(80, 80, 189);
+}

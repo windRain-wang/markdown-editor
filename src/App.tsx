@@ -1,10 +1,10 @@
-import MarkdownEditContainer from "./components/MarkdownEditContainer";
+import MarkdownControl from "./MarkdownControl";
 import "./styles.css";
 
 export default function App() {
   return (
     <div className="App">
-      <MarkdownEditContainer />
+      <MarkdownControl />
     </div>
   );
 }

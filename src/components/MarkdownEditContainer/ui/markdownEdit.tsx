@@ -1,19 +1,30 @@
 import React from "react";
 import "./index.css";
-
+import { TextAreaRef } from "../types";
 interface IProps {
-  parse: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  // parse: (v: string) => void;
   htmlMarkdownStr: string;
+  markdownValue: string;
+  setMarkdownValue: (v: string) => void;
 }
 
-export default function MarkdownEdit(props: IProps) {
-  return (
+export default React.forwardRef(
+  (props: IProps, ref: React.Ref<TextAreaRef>) => (
     <div className="markdownEditContainer">
-      <textarea className="edit" onChange={props.parse} />
+      <textarea
+        className="edit"
+        ref={ref}
+        value={props.markdownValue}
+        onChange={(e) => {
+          const value = e.target.value;
+          props.setMarkdownValue(value);
+          // props.parse(value);
+        }}
+      />
       <div
         className="show"
         dangerouslySetInnerHTML={{ __html: props.htmlMarkdownStr }}
       ></div>
     </div>
-  );
-}
+  )
+);
