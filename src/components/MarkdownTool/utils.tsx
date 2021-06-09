@@ -12,11 +12,11 @@ export const handleFont: fontFunction = (text, start, end, rule) => {
     usingText = text.substring(start, end),
     endText = text.substring(end);
   switch (rule) {
-    case FontEnum.blod:
+    case FontEnum.Blod:
       return frontText.concat(`**${usingText}**`, endText);
-    case FontEnum.italic:
+    case FontEnum.Italic:
       return frontText.concat(`*${usingText}*`, endText);
-    case FontEnum.del:
+    case FontEnum.Del:
       return frontText.concat(`~~${usingText}~~`, endText);
     default:
       return text;

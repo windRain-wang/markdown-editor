@@ -20,7 +20,7 @@ class MarkdownTool extends React.Component<ControlTypes, IState> {
             markdownValue,
             start,
             end,
-            FontEnum.blod
+            FontEnum.Blod
           );
           setMarkdownValue(newMarkdownValue);
         }
@@ -34,7 +34,7 @@ class MarkdownTool extends React.Component<ControlTypes, IState> {
             markdownValue,
             start,
             end,
-            FontEnum.italic
+            FontEnum.Italic
           );
           setMarkdownValue(newMarkdownValue);
         }
@@ -48,7 +48,7 @@ class MarkdownTool extends React.Component<ControlTypes, IState> {
             markdownValue,
             start,
             end,
-            FontEnum.del
+            FontEnum.Del
           );
           setMarkdownValue(newMarkdownValue);
         }
@@ -61,7 +61,7 @@ class MarkdownTool extends React.Component<ControlTypes, IState> {
           const newMarkdownValue = handleHeadLine(
             markdownValue,
             start,
-            HeadLineEnum.h1
+            HeadLineEnum.H1
           );
           setMarkdownValue(newMarkdownValue);
         }

@@ -4,16 +4,16 @@ export type tool = {
 };
 
 export enum FontEnum {
-  blod,
-  italic,
-  del
+  Blod,
+  Italic,
+  Del
 }
 
 export enum HeadLineEnum {
-  h1 = 1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6
+  H1 = 1,
+  H2 = 2,
+  H3 = 3,
+  H4 = 4,
+  H5 = 5,
+  H6 = 6
 }
