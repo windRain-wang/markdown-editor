@@ -17,9 +17,6 @@ marked.setOptions({
 
 const parse = (value: string): string => {
   return marked(value);
-  // this.setState({
-  //   htmlMarkdownStr
-  // });
 };
 
 class MarkdownControl extends React.Component<{}, ControlTypes> {
@@ -35,7 +32,7 @@ class MarkdownControl extends React.Component<{}, ControlTypes> {
     getSelectionPosition: this.getSelectionPosition.bind(this)
   };
   // MarkdownEditContainerRef
-  editorRef = React.createRef<MarkdownEditContainer>();
+  editorRef = React.createRef<HTMLTextAreaElement>();
 
   // 改变 markdown 和 htmlMarkdownStr 的方法
   setMarkdownValue(newValue: string) {
@@ -44,15 +41,6 @@ class MarkdownControl extends React.Component<{}, ControlTypes> {
       htmlMarkdownStr: parse(newValue)
     });
   }
-
-  // 获得 selectionPosition
-  // getSelectionPosition() {
-  //   if (this.editorRef.current) {
-  //     return this.editorRef.current.getSelectionPosition();
-  //   } else {
-  //     return [0, 0];
-  //   }
-  // }
 
   // 获得光标的位置 [起点, 终点]
   getSelectionPosition() {

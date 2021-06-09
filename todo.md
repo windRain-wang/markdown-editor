@@ -11,4 +11,7 @@
    光标位置 (event.target.selectionStart, event.target.selectionEnd)
    设置光标 setSelectionRange()
 8. 了解内存管理
+9. 当 选中的文本已经加粗时， 再点击 按钮应该是取消加粗， 其他按钮功能一样
    ...
+
+已解决：
